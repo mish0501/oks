@@ -1,37 +1,14 @@
-<?php
-$host = 'localhost';
-$user = "user";
-$password = "Oks_2024";
-$database = "lab8";
-$table = "users";
-
-$conn = new mysqli($host, $user, $password, $database);
-
-if($conn->connect_error)
-{
-	die("Connection Failed: " . $conn->connect_error);
-}
-
-$result = $conn->query("SELECT name FROM lab8.users")->fetch_all();
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Users</title>
+    <title>Vulnerable SQL Injection Form</title>
 </head>
 <body>
-  <h2>Users</h2>
-  <ol>
-    <?php 
-      foreach ($result as $row) {
-    ?>
-      <li><?php echo $row[0] ?></li>
-    <?php
-      }
-    ?>
-  </ol>
+    <h1>Search User</h1>
+    <form method="GET" action="/search.php">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <button type="submit">Search</button>
+    </form>
 </body>
 </html>
