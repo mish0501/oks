@@ -3,7 +3,6 @@ $host = 'localhost';
 $user = "user";
 $password = "Oks_2024";
 $database = "lab8";
-$table = "users";
 
 $conn = new mysqli($host, $user, $password, $database);
 
