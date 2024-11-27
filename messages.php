@@ -12,22 +12,6 @@ if($conn->connect_error)
 	die("Connection Failed: " . $conn->connect_error);
 }
 
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get user input
-    $user_input = $_POST['message'];
-
-    // Save input to the database using a prepared statement
-    $stmt = $conn->prepare("INSERT INTO messages (message) VALUES (?)");
-    $stmt->bind_param("s", $user_input);
-
-    if (!$stmt->execute()) {
-        die($stmt->error);
-    }
-
-    $stmt->close();
-}
-
 // Fetch and display saved messages
 $result = $conn->query("SELECT message FROM messages")->fetch_all();
 
